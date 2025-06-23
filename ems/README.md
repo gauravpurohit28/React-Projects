@@ -1,12 +1,55 @@
-# React + Vite
+# Employee Management System (EMS)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web-based Employee Management System built with React and Vite. This application allows administrators to manage employees and their tasks, while employees can view and update their assigned tasks.
 
-Currently, two official plugins are available:
+## Features
+- Admin and Employee login
+- Admin can create and assign tasks to employees
+- Employees can view, accept, and update the status of their tasks
+- Task status tracking: New, Active, Completed, Failed
+- Dashboard views for both Admin and Employees
+- Persistent data using localStorage
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
+- Node.js (v14 or above)
+- npm or yarn
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone <repo-url>
+   cd ems
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+4. Open [http://localhost:5173](http://localhost:5173) to view the app.
+
+## Usage
+- **Admin Login:**
+  - Email: `admin@me.com`
+  - Password: `123`
+- **Employee Login:**
+  - Use one of the employee emails and password `123` (see `src/utils/localStorage.tsx` for sample users)
+
+## Project Structure
+- `src/components/` - React components (Auth, Dashboard, TaskList, etc.)
+- `src/context/` - Context providers (authentication, user data)
+- `src/utils/` - Utility functions (localStorage management)
+
+## Customization
+- To add more employees or tasks, edit `src/utils/localStorage.tsx`.
+
+## License
+This project is for educational/demo purposes.

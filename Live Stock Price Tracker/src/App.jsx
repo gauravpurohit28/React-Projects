@@ -1,13 +1,30 @@
 import { useState } from 'react'
+import StockPrice from './component/StockPrice'
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
+    const [tickers,setTickers] = useState(["NVDA", "MSFT","GOOGL"]);
+    const [input,setInput] = useState("");
+
+    const addTicker = () =>{
+      const value = input.trim().toUpperCase()
+      if(val && !tickers.includes(value)){
+          setTickers([...tickers, value]);
+      }    
+    };
+    return(
+
     <>
-      <h1 className='text-center'>Hello world</h1>
+    <div>
+      {tickers.map((ticker)=>(
+        <StockPrice key={ticker} ticker={ticker}/>
+
+      ))}
+
+      
+    </div>
+      
     </>
-  )
-}
+)}
 
 export default App

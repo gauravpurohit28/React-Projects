@@ -15,7 +15,7 @@ function App() {
     return(
 
     <>
-    <div>
+    <div className='flex flex-wrap justify-center gap-6 w-full max-w-4xl'>
       {tickers.map((ticker)=>(
         <StockPrice key={ticker} ticker={ticker}/>
 

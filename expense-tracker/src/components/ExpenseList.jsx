@@ -1,14 +1,19 @@
-import ExpenseItem from './ExpenseItem';
 
-const ExpenseList = ({ expenses, onDelete }) => {
-  if (expenses.length === 0) return <p>No expenses found.</p>;
+
+const ExpenseList = ({ expense }) => {
 
   return (
     <div>
-      {expenses.map((expense) => (
-        <ExpenseItem key={expense.id} expense={expense} onDelete={onDelete} />
-      ))}
+      {expense && expense.map((item,index)=>
+        <div>
+          {item.title}
+          {item.amount}
+          {item.category}
+        </div>
+
+      )};
     </div>
+    
   );
 };
 

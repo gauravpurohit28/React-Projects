@@ -26,8 +26,9 @@ const AddExpenseForm = ({onAdd}) => {
   };
 
   return (
-    <div>
-    <h1>Add Expense Here!</h1>
+    
+    <div className='flex justify-center'>
+    
     <form>
     <input 
     type='text'

@@ -3,25 +3,17 @@ import { useState } from 'react';
 import ExpenseList from './components/ExpenseList';
 
 function App() {
-
-  const [expenses, setExpenses] = useState();
+  const [expenses, setExpenses] = useState([]);
 
   const handleAddExpense = (expense) => {
-    const arr = expenses?.length>0 ? [...expenses]:[expense]
-    console.log(expenses);
-    
-
-    setExpenses(arr);
-    
-    
+    setExpenses((prev) => [...prev, expense]);
   };
 
-   return (
-    <div>
-      <h1>Expense Tracker</h1>
+  return (
+    <div className="p-4">
+      <h1 className="text-center text-2xl mb-6">Expense Tracker</h1>
       <AddExpenseForm onAdd={handleAddExpense} />
-      <ExpenseList expense = {expenses}/>
-      
+      <ExpenseList expense={expenses} />
     </div>
   );
 }

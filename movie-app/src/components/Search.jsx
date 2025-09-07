@@ -17,4 +17,4 @@ const Search = ({SearchTerm,setSearchTerm}) => {
   )
 }
 
-export default Search
+export default Search;

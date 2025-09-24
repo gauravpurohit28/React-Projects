@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
+import { useDebounce } from 'react-use';
 import Search from './components/Search'
+import Spinner from './components/Spinner';
 import MovieCard from './components/MovieCard';
 
 
@@ -21,13 +23,16 @@ const App = () => {
   const [SearchTerm, setSearchTerm] = useState('');
   const [MovieList, setMovieList] = useState([])
   const [isLoading, setisLoading] = useState(false)
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('')
+
+  useDebounce(()=> setDebouncedSearchTerm, 500 , [SearchTerm])
 
 
-  const fetchMovies = async () => {
+  const fetchMovies = async (query = ' ') => {
     setisLoading(true);
     setErrorMessage('');
     try {
-      const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
+      const endpoint = query ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}` : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
       const response = await fetch(endpoint, API_OPTIONS);
 
       if (!response.ok) {
@@ -53,8 +58,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchMovies();
-  }, []);
+    fetchMovies(SearchTerm);
+  }, [SearchTerm]);
 
  
   return (
@@ -69,7 +74,7 @@ const App = () => {
         <section className='all-movies'>
           <h2 className='mt-[40px]'>All Movies</h2>
           {isLoading ? (
-            <p className='text-white'>Loading...</p>
+            <Spinner/>
           ) : ErrorMessage ? (
           <p className='text-red-500'>{ErrorMessage}</p>
           ) : (
